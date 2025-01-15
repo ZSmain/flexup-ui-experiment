@@ -1,0 +1,7 @@
+[project]
+name = "flexup-ui-experiment"
+version = "0.1.0"
+description = "Initial FlexUp App UI Experiment"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["django>=5.1.5"]
