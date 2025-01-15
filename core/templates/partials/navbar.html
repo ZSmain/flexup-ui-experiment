@@ -1,0 +1,36 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md bg-light shadow-sm">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center">
+      {% if is_dashboard %}
+        <button id="sidebarToggle" class="btn btn-sm me-2 d-md-none"><i class="bi bi-list"></i></button>
+        <button id="sidebarToggleDesktop" class="btn btn-sm me-2 d-none d-md-block"><i class="bi bi-arrow-left-right"></i></button>
+      {% endif %}
+      <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/logo.svg' %}" alt="FlexUp" height="30" /></a>
+
+      <div class="collapse navbar-collapse ms-md-3" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+          </li>
+          {% if not is_dashboard %}
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="d-none d-md-block">
+      <button class="btn btn-outline-secondary">Login</button>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  </div>
+</nav>
