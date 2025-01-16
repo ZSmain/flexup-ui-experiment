@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     # Local apps
     'core',
+    'debug_widget',
 ]
 
 MIDDLEWARE = [
@@ -43,7 +44,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_widget.middleware.DebugWidgetMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -116,9 +118,16 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
+    BASE_DIR / 'core/static',
+    BASE_DIR / 'debug_widget/static',
 ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Debug widget settings
+DEBUG_WIDGET_CONTEXT_VAR = 'DEBUG_DATA'  # The context variable to look for
+DEBUG_WIDGET_POSITION = 'right'  # 'left' or 'right'
+DEBUG_WIDGET_THEME = 'light'    # 'light' or 'dark'

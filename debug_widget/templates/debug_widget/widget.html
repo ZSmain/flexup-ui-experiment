@@ -1,0 +1,32 @@
+{% load static %}
+{% load debug_widget_tags %}
+<div id="debug-widget" class="debug-widget debug-widget-{{ widget_position }} debug-widget-{{ widget_theme }}">
+  <div class="debug-widget-handle" onclick="toggleDebugWidget()">
+    <i class="bi bi-bug"></i>
+  </div>
+
+  <div class="debug-widget-content">
+    <div class="debug-widget-header">
+      <h5 class="m-0">Debug Information</h5>
+      <button type="button" class="btn-close" onclick="toggleDebugWidget()"></button>
+    </div>
+
+    <div class="debug-widget-body">
+      {% if debug_data %}
+        {% for section, data in debug_data.items %}
+          <div class="debug-section">
+            <div class="debug-section-header" data-bs-toggle="collapse" data-bs-target="#debug-section-{{ forloop.counter }}">
+              <i class="bi bi-chevron-right"></i>
+              {{ section }}
+            </div>
+            <div id="debug-section-{{ forloop.counter }}" class="collapse debug-section-content">
+              {% include 'debug_widget/partials/data_renderer.html' with data=data %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-muted">No debug data available</p>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{% load debug_widget_tags %}
+{% if data|is_dict %}
+  <dl class="row mb-0">
+    {% for key, value in data.items %}
+      <dt class="col-sm-3">{{ key }}</dt>
+      <dd class="col-sm-9">
+        {% if value|is_dict or value|is_list %}
+          {% include 'debug_widget/partials/data_renderer.html' with data=value %}
+        {% else %}
+          <span class="debug-value">{{ value }}</span>
+        {% endif %}
+      </dd>
+    {% endfor %}
+  </dl>
+{% elif data|is_list %}
+  <ul class="list-unstyled mb-0">
+    {% for item in data %}
+      <li>
+        {% if item|is_dict or item|is_list %}
+          {% include 'debug_widget/partials/data_renderer.html' with data=item %}
+        {% else %}
+          <span class="debug-value">{{ item }}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <span class="debug-value">{{ data }}</span>
+{% endif %}

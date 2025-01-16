@@ -1,0 +1,118 @@
+.debug-widget {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    z-index: 9999;
+    transition: transform 0.3s ease-in-out;
+}
+
+.debug-widget-right {
+    right: 0;
+    transform: translateX(100%);
+}
+
+.debug-widget-left {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.debug-widget.active {
+    transform: translateX(0);
+}
+
+.debug-widget-handle {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 60px;
+    background: var(--bs-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px 0 0 4px;
+}
+
+.debug-widget-right .debug-widget-handle {
+    left: -30px;
+}
+
+.debug-widget-left .debug-widget-handle {
+    right: -30px;
+}
+
+.debug-widget-content {
+    width: 400px;
+    height: 100%;
+    background: var(--bs-light);
+    border-left: 1px solid var(--bs-border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.debug-widget-header {
+    padding: 1rem;
+    background: var(--bs-primary);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.debug-widget-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.debug-section {
+    margin-bottom: 1rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 4px;
+}
+
+.debug-section-header {
+    padding: 0.5rem 1rem;
+    background: var(--bs-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.debug-section-header i {
+    margin-right: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.debug-section-header[aria-expanded="true"] i {
+    transform: rotate(90deg);
+}
+
+.debug-section-content {
+    padding: 1rem;
+    background: white;
+}
+
+.debug-value {
+    font-family: monospace;
+    word-break: break-all;
+}
+
+/* Dark theme */
+.debug-widget-dark .debug-widget-content {
+    background: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+.debug-widget-dark .debug-section {
+    border-color: var(--bs-gray-700);
+}
+
+.debug-widget-dark .debug-section-header {
+    background: var(--bs-gray-800);
+}
+
+.debug-widget-dark .debug-section-content {
+    background: var(--bs-gray-900);
+}
