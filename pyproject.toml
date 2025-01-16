@@ -4,4 +4,7 @@ version = "0.1.0"
 description = "Initial FlexUp App UI Experiment"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["django>=5.1.5"]
+dependencies = [
+    "django>=5.1.5",
+    "django-debug-toolbar>=5.0.1",
+]
